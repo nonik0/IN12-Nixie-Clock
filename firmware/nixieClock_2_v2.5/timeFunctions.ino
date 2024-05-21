@@ -1,7 +1,10 @@
 // отправить на индикаторы
 void sendTime(byte hours, byte minutes) {
-  indiDigits[0] = (byte)hours / 10;
-  indiDigits[1] = (byte)hours % 10;
+  byte hoursAdj = is24Hour                   
+    ? hours                  
+    : (hours + 11) % 12 + 1; 
+  indiDigits[0] = (byte)hoursAdj / 10;
+  indiDigits[1] = (byte)hoursAdj % 10;
 
   indiDigits[2] = (byte)minutes / 10;
   indiDigits[3] = (byte)minutes % 10;

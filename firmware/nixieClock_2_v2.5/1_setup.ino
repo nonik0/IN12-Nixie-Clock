@@ -1,5 +1,6 @@
 void setup() {
-  //Serial.begin(9600);
+  Serial.begin(9600);
+  
   // случайное зерно для генератора случайных чисел
   randomSeed(analogRead(6) + analogRead(7));
 
