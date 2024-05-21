@@ -28,6 +28,7 @@ volatile int8_t indiDigits[4];    // цифры, которые должны п�
 volatile int8_t curIndi;          // текущий индикатор (0-3)
 
 boolean dotFlag;
+bool is24Hour = true;
 int8_t hrs, mins, secs;
 int8_t alm_hrs, alm_mins;
 int8_t mode = 0;    // 0 часы, 1 температура, 2 настройка будильника, 3 настройка часов, 4 аларм
