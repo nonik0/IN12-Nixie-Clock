@@ -45,10 +45,14 @@ void setup() {
     EEPROM.put(0, FLIP_EFFECT);
     EEPROM.put(1, BACKL_MODE);
     EEPROM.put(2, GLITCH_ALLOWED);
+    EEPROM.put(3, IS_24_HOUR);
+    EEPROM.put(4, CUR_BRIGHT);
   }
   EEPROM.get(0, FLIP_EFFECT);
   EEPROM.get(1, BACKL_MODE);
   EEPROM.get(2, GLITCH_ALLOWED);
+  EEPROM.get(3, IS_24_HOUR);
+  EEPROM.get(4, CUR_BRIGHT);
 
   /*if (EEPROM.read(100) != 66) {   // проверка на первый запуск. 66 от балды
     EEPROM.write(100, 66);
@@ -70,8 +74,8 @@ void setup() {
   if (dotBrightStep == 0) dotBrightStep = 1;
 
   // дыхание подсветки
-  if (backlMaxBright > 0)
-    backlBrightTimer.setInterval((float)BACKL_STEP / backlMaxBright / 2 * BACKL_TIME);
+  // if (backlMaxBright > 0)
+  //   backlBrightTimer.setInterval((float)BACKL_STEP / backlMaxBright / 2 * BACKL_TIME);
 
   // стартовый период глюков
   glitchTimer.setInterval(random(GLITCH_MIN * 1000L, GLITCH_MAX * 1000L));

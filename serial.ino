@@ -64,10 +64,12 @@ void serialTick() {
     case 'h':
       is24Hour = false;
       newTimeFlag = true;
+      EEPROM.put(3, IS_24_HOUR);
       break;
     case 'H':
       is24Hour = true;
       newTimeFlag = true;
+      EEPROM.put(3, IS_24_HOUR);
       break;
 
     case 'T':
@@ -80,13 +82,10 @@ void serialTick() {
 
     case 'B': 
       unsigned int newDimValue = (serialIn[1] - '0') * 10 + serialIn[2] - '0';
-      indiMaxBright = newDimValue > 24 ? 24 : newDimValue;
-      indiDimm[0] = indiMaxBright;
-      indiDimm[1] = indiMaxBright;
-      indiDimm[2] = indiMaxBright;
-      indiDimm[3] = indiMaxBright;
+      CUR_BRIGHT = newDimValue > 24 ? 24 : newDimValue;
+      EEPROM.put(4, CUR_BRIGHT);
+      changeBright();
       break;
-
 
     default:
       break;
