@@ -62,14 +62,18 @@ void serialTick() {
       break;
 
     case 'h':
-      is24Hour = false;
+      IS_24_HOUR = false;
       newTimeFlag = true;
       EEPROM.put(3, IS_24_HOUR);
+      Serial.write("12\n");
+      Serial.flush();
       break;
     case 'H':
-      is24Hour = true;
+      IS_24_HOUR = true;
       newTimeFlag = true;
       EEPROM.put(3, IS_24_HOUR);
+      Serial.write("24\n");
+      Serial.flush();
       break;
 
     case 'T':
